@@ -77,205 +77,246 @@
             <h3>Course Schedule (tentative)</h3>
             <p>The following schedule is approximate and subject to change. Additionally, the slides provided prior to
                 the day of the class may not be fully updated and are also subject to change.</p>
-            <table class="table table-striped">
-                <thead>
-                    <tr>
-                        <th scope="col">Week</th>
-                        <th scope="col">Topics</th>
-                        <th scope="col">Reading</th>
-                        <th scope="col">Slides</th>
-                        <th scope="col">Assignment</th>
-                        <th scope="col">Due Dates</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <th scope="row">Week 1: Introduction to Machine Learning</th>
-                        <td>- Course Introduction</td>
-                        <td><a href="cisc-435/readings/math4ml.pdf">Math for Machine Learning</a></td>
-                        <td>Slides: <a href="cisc-435/lectures/01-intro.pdf">Introduction</a></td>
-                        <td><a href="cisc-435/assignment/CISC_435_Assignment01.pdf">A01: Math & Programming Review</a>
-                        </td>
+                <table class="table table-bordered table-striped">
+                    <thead class="thead-dark">
+                      <tr>
+                        <th>LEC#</th>
+                        <th>Day</th>
+                        <th>TOPICS</th>
+                        <th>KEY DATES</th>
+                        <th>Readings</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td colspan="5" class="table-secondary"><strong>Unit 1: Mathematical Background</strong></td>
+                      </tr>
+                      <tr>
+                        <td>1</td>
+                        <td>01/08</td>
+                        <td>Course Introduction. Summation, functions, limit, derivatives, integrals and Matrices.</td>
+                        <td>Problem set 1 out.</td>
                         <td></td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Week 2: Bayes Rule</th>
-                        <td>
-                            - Introduction to Bayesian statistics<br>
-                            - Naïve Bayes<br>
-                            - Gaussian Models
-                        </td>
-                        <td><a target="_blank"
-                                href="https://medium.com/@minagabriel/maximum-likelihood-estimation-mle-theory-and-working-example-b59146da93e">MLE</a><br>
-                            <a href="http://ciml.info/dl/v0_99/ciml-v0_99-ch09.pdf">CML Section: 9.1-9.3</a>
-                        </td>
-                        <td>Slides: <a href="cisc-435/lectures/02-bayesclass.pdf">Bayes Classifiers</a></td>
-                        <td><a href="cisc-435/assignment/CISC_435_Assignment02.pdf">A02: Bayes Rule</a></td>
-                        <td>A01: 09/07</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Week 3: Supervised Learning - Regression </th>
-                        <td>
-                            - Linear regression<br>
-                            - Polynomial regression
-                        </td>
-                        <td><a href="http://ciml.info/dl/v0_99/ciml-v0_99-ch07.pdf">CML Ch 7</a></td>
-                        <td>Slides: <a href="cisc-435/lectures/04-linRegress.pdf">Linear regression</a></td>
+                      </tr>
+                      <tr>
+                        <td>2</td>
+                        <td>01/10</td>
+                        <td>Sequence, Mathematical Induction</td>
                         <td></td>
                         <td></td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Week 4: Supervised Learning - Classification </th>
-                        <td>
-                            - Logistic regression<br>
-                            - K-nearest neighbors (KNN)
-                        </td>
-                        <td><a href="http://ciml.info/dl/v0_99/ciml-v0_99-ch03.pdf">CML Ch 3</a></td>
-                        <td>Slides: <a href="cisc-435/lectures/05-linClassify.pdf">Linear classification</a><br>
-                            Slides: <a href="cisc-435/lectures/03-knn.pdf">Nearest neighbor methods</a>
-                        </td>
-                        <td><a href="cisc-435/assignment/CISC_435_Assignment03.pdf">A03: Regression</a></td>
-                        <td>A02: 09/21</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Week 5: Supervised Learning - Decision Trees and Random Forests</th>
-                        <td>
-                            - Decision trees<br>
-                            - Ensemble methods: random forests<br>
-                            - Feature importance and interpretation
-                        </td>
-                        <td><a href="http://ciml.info/dl/v0_99/ciml-v0_99-ch01.pdf">CML Section: 1.1-1.3</a></td>
-                        <td>Slides: <a href="cisc-435/lectures/09-dectree.pdf">Decision Trees</a><br>
-                            Slides: <a href="cisc-435/lectures/10-ensembles.pdf">Ensembles of Learners</a>
-                        </td>
+                      </tr>
+                      <tr>
+                        <td>3</td>
+                        <td>01/15</td>
+                        <td>Proof by Induction, loop invariant</td>
                         <td></td>
                         <td></td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Week 6: Unsupervised Learning - Clustering</th>
-                        <td>
-                            - K-means clustering<br>
-                            - Hierarchical clustering<br>
-                            - Evaluation metrics for clustering
-                        </td>
-                        <td><a href="cisc-435/readings/K-Means.pdf">Andrew Ng: K-means</a></td>
-                        <td>Slides: <a href="cisc-435/lectures/21-clustering.pdf">Clustering</a></td>
-                        <td><a href="cisc-435/assignment/CISC_435_Assignment04.pdf">A04: Trees & Clustering</a> </td>
-                        <td>A03: 10/05</td>
-                    </tr>
-
-                    <tr>
-                        <th scope="row">Week 7: Unsupervised Learning - Dimensionality Reduction</th>
-                        <td>
-                            - Principal Component Analysis (PCA)<br>
-                            - Singular Value Decomposition (SVD)<br>
-                            - Applications of dimensionality reduction<br>
-                        </td>
-                        <td><a href="cisc-435/readings/Principal Components Analysis.pdf">Andrew Ng: Principal
-                                components analysis</a></td>
-                        <td>Slides: <a href="cisc-435/lectures/22-svds.pdf">Dimensionality Reduction</a> <br> </td>
+                      </tr>
+                      <tr>
+                        <td colspan="5" class="table-secondary"><strong>Unit 2: Analysis of Algorithms Efficiency</strong></td>
+                      </tr>
+                      <tr>
+                        <td>4</td>
+                        <td>01/17</td>
+                        <td>Introduction to Algorithms, Big-O Estimate for some important functions. </td>
+                        <td>Problem set 1 due, Problem set 2 out.</td>
+                        <td>1.1 & 1.2 Discrete Mathematics and its application – Chapter 3 and Chapter 5 (Slides on Canvas)</td>
+                      </tr>
+                      <tr>
+                        <td>5</td>
+                        <td>01/22</td>
+                        <td>Big-Omega and Big-Theta, Time Complexity.</td>
                         <td></td>
                         <td></td>
-                    </tr>
-
-                    <tr>
-                        <th scope="row">Week 8: Midterm Exam</th>
-                        <td colspan="5"> Midterm Review (10/17) + Midterm Exam (10/19) </td>
-                    </tr>
-
-                    <tr>
-                        <th scope="row">Week 9: Support Vector Machines (SVM)</th>
-                        <td>
-                            - Geometric interpretation of SVM <br>
-                            - Kernel trick and non-linear SVM <br>
-                            - Hyperparameter tuning for SVM <br>
-                            - Applications of SVM in real-world problems <br>
-
-                        </td>
-                        <td><a href="cisc-435/readings/Kernel Methods and SVM.pdf">Andrew Ng: Kernel Methods and SVM P. 11-15</a></td>
-                        <td>Slides: <a href="cisc-435/lectures/06-svm.pdf">Support Vector Machines</a> <br> </td>
-                        <td><a href="cisc-435/assignment/CISC_435_Assignment05.pdf">A05: PCA & SVM</a></td>
-                        <td>A04: 10/19</td>
-                    </tr>
-
-
-                    <tr>
-                        <th scope="row">Week 10: Neural Networks and Deep Learning</th>
-                        <td>
-                            - Introduction to neural networks <br>
-                            - Feedforward neural networks<br>
-                            - Backpropagation and gradient descent<br>
-                            - Activation functions and loss functions <br>
-                            - Introduction to deep learning frameworks (e.g., TensorFlow, Keras)<br>
-                        </td>
-                        <td><a href="cisc-435/readings/Neural Networks.pdf">Neural Networks</a></td>
-                        <td>Slides: <a href="cisc-435/lectures/08-mlpercept.pdf">Neural Networks</a> <br> </td>
-                        <td><a href="cisc-435/assignment/CISC_435_Assignment06.pdf">A06: Neural Networks</a></td>
-                        <td>A05: 11/02</td>
-                    </tr>
-
-                    <tr>
-                        <th scope="row">Week 11: Convolutional Neural Networks (CNNs)</th>
-                        <td>
-                            - Basics of CNNs <br>
-                            - Image classification using CNNs <br>
-                            - Transfer learning with pre-trained models <br>
-                        </td>
+                      </tr>
+                      <tr>
+                        <td>6</td>
+                        <td>01/24</td>
+                        <td>Growth of Function: Asymptotic notation</td>
                         <td></td>
-                        <td>Slides: <a href="cisc-435/lectures/lec21_cnns_for_web.pdf">Convolutional Neural Networks</a>
-                            <br> </td>
-                            <td><a href="cisc-435/assignment/CISC_435_Assignment07.pdf">A07: CNN</a></td>
-                            <td></td> 
-                    </tr>
-
-                    <tr>
-                        <th scope="row">Week 12: Reinforcement Learning</th>
-                        <td>
-                            - Introduction to reinforcement learning<br>
-                            - Markov Decision Processes (MDPs)<br>
-                            - Q-learning and policy gradient methods<br>
-                            - Applications of reinforcement learning<br>
-                        </td>
+                        <td>3.1</td>
+                      </tr>
+                      <tr>
+                        <td>7</td>
+                        <td>01/29</td>
+                        <td>Growth of Function: Standard notations and common functions</td>
                         <td></td>
-                        <td>Slides: <a href="cisc-435/lectures/33-reinforce.pdf">Reinforcement Learning</a> <br> </td>
+                        <td>3.2</td>
+                      </tr>
+                      <tr>
+                        <td>8</td>
+                        <td>01/31</td>
+                        <td><span class="text-danger">Recitation (Mandatory)</span>  Lab 01</td>
                         <td></td>
-                        <td>A06: 11/16</td> 
-                    </tr>
-                    <tr>
-                        <th scope="row">Week 13</th> 
-                        <td colspan="5" style="text-align: center;">Thanksgiving Holiday</td>
-                    </tr>
-
-                    <tr>
-                        <th scope="row">Week 14</th>
-                        <td colspan="4">Final Exam Review(11/28) + Final Exam (11/30)</td> 
-                        <td >A07: 11/30</td>
-                    </tr>
-
-
-                    <tr>
-                        <th scope="row">Week 15: Final Project Presentations and Wrap-up</th>
-                        <td>
-                            - Students present their machine learning projects<br>
-                            - Recap of key topics and discussion of future trends in machine learning <br>
-                            - Final Exam Review
-                        </td>
+                        <td></td>
+                      </tr>
+                      <tr>
+                        <td colspan="5" class="table-secondary"><strong>Unit 3: Sorting and Trees</strong></td>
+                      </tr>
+                      <tr>
+                        <td>9</td>
+                        <td>02/05</td>
+                        <td>Insertion sort, Merge sort. </td>
+                        <td>Problem set 2 due, Problem set 3 out.</td>
+                        <td>1.2, 2.1-2.3, 4.3-4.6</td>
+                      </tr>
+                      <tr>
+                        <td>10</td>
+                        <td>02/07</td>
+                        <td>Heaps and Heap sort</td>
+                        <td></td>
+                        <td>6.1-6.4</td>
+                      </tr>
+                      <tr>
+                        <td>11</td>
+                        <td>02/12</td>
+                        <td>Binary Search Trees</td>
+                        <td></td>
+                        <td>10.4, 12</td>
+                      </tr>
+                      <tr>
+                        <td>12</td>
+                        <td>02/14</td>
+                        <td>AVL trees, AVL sort</td>
+                        <td></td>
+                        <td>13.2, 14</td>
+                      </tr>
+                      <tr>
+                        <td>13</td>
+                        <td>02/19</td>
+                        <td>Red-Black Trees</td>
+                        <td></td>
+                        <td></td>
+                      </tr>
+                      <tr>
+                        <td>14</td>
+                        <td>02/21</td>
+                        <td><span class="text-danger">Recitation (Mandatory)</span>  Lab 02</td>
+                        <td></td>
+                        <td></td>
+                      </tr>
+                      <tr>
+                        <td colspan="5">SPRING RECESS (02/26 - 03/03)</td>
+                      </tr>
+                      <tr>
+                        <td>15</td>
+                        <td>03/04</td>
+                        <td>Midterm Review</td>
+                        <td></td>
+                        <td></td>
+                      </tr>
+                      <tr>
+                        <td colspan="5">03/06 Midterm Exam</td>
+                      </tr>
+                      <tr>
+                        <td colspan="5" class="table-secondary"><strong>Unit 4: Advanced Techniques in Search and Sorting</strong></td>
+                      </tr>
+                      <tr>
+                        <td>16</td>
+                        <td>03/11</td>
+                        <td><strong><a href="cisc-233/lectures/Quick_Sort.pdf">Quick Sort </a></strong></td>
+                        <td>Problem set 3 due, Problem set 4 out.</td>
+                        <td>11.1-11.3</td>
+                      </tr>
+                      <tr>
+                        <td>17</td>
+                        <td>03/13</td>
+                        <td>Hashing</td>
+                        <td></td>
+                        <td>11.4</td>
+                      </tr>
+                      <tr>
+                        <td>18</td>
+                        <td>03/18</td>
                         <td></td>
                         <td></td>
                         <td></td>
+                      </tr>
+                      <tr>
+                        <td colspan="5" class="table-secondary"><strong>Unit 5: Graphs</strong></td>
+                      </tr>
+                      <tr>
+                        <td>19</td>
+                        <td>03/20</td>
+                        <td>Breadth-first Search (BFS). </td>
+                        <td>Problem set 4 due, Problem set 5 out.</td>
+                        <td>22.1-22.2</td>
+                      </tr>
+                      <tr>
+                        <td>20</td>
+                        <td>03/25</td>
+                        <td>Depth-first Search (DFS)</td>
                         <td></td>
-                    </tr>
-
-
-
-                </tbody>
-            </table>
+                        <td>2.3-22.4</td>
+                      </tr>
+                      <tr>
+                        <td>21</td>
+                        <td></td>
+                        <td><span class="text-danger">Recitation (Mandatory)</span>  Lab 03</td>
+                        <td></td>
+                        <td></td>
+                      </tr>
+                      <tr>
+                        <td colspan="5" class="table-secondary"><strong>Unit 6: Shortest Paths</strong></td>
+                      </tr>
+                      <tr>
+                        <td>22</td>
+                        <td>03/27</td>
+                        <td>Single-source shortest paths problem. </td>
+                        <td>Problem set 5 due, Problem set 6 out.</td>
+                        <td>24.0 -24.5</td>
+                      </tr>
+                      <tr>
+                        <td>23</td>
+                        <td>04/01</td>
+                        <td>Dijkstra</td>
+                        <td></td>
+                        <td>24.3</td>
+                      </tr>
+                      <tr>
+                        <td>24</td>
+                        <td>04/03</td>
+                        <td>Bellman-ford</td>
+                        <td></td>
+                        <td>24.1-24.2</td>
+                      </tr>
+                      <tr>
+                        <td colspan="5" class="table-secondary"><strong>Unit 7: Dynamic Programming</strong></td>
+                      </tr>
+                      <tr>
+                        <td>25</td>
+                        <td>04/08</td>
+                        <td>Fibonacci, Rod Cutting</td>
+                        <td></td>
+                        <td>15.1</td>
+                      </tr>
+                      <tr>
+                        <td>26</td>
+                        <td>04/10</td>
+                        <td><span class="text-danger">Recitation (Mandatory)</span>  Lab: 04</td>
+                        <td></td>
+                        <td></td>
+                      </tr>
+                      <tr>
+                        <td>27</td>
+                        <td>04/15</td>
+                        <td>Final Review. Problem set 6 due.</td>
+                        <td></td>
+                        <td>15.2</td>
+                      </tr>
+                      <tr>
+                        <td colspan="5">04/17 Final Exam</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  
+                  
         </section>
 
         <section class="mb-4">
             <h3>Previous Exams</h3>
             <ul>
-                <li><a href="cisc-435/exams/CISC_435_midterm.pdf" target="_blank">Midterm Exam FALL 2023</a></li>
+                <li><a href="cisc-435/exams/CISC_435_midterm.pdf" target="_blank">Midterm Exam Spring 2024</a></li>
                
                 <!-- Add more exam links as needed -->
             </ul>
