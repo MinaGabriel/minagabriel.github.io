@@ -1,29 +1,293 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Your Courses</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Mina Gabriel — Portfolio</title>
+
+  <!-- Inter font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<!-- Bootstrap Icons CDN -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+
+  <!-- Bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <style>
+    :root{
+      --title:#000;      /* Titles black */
+      --subtle:#666;     /* Subtitles gray */
+      --line:#eee;
+      --maxw: 860px;     /* Compact center width */
+    }
+
+    html { scroll-behavior:smooth; }
+    body{
+      font-family:'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+      color:#333; background:#fff; line-height:1.55;
+    }
+
+    .wrap{ max-width:var(--maxw); margin-inline:auto; padding-inline:1.25rem; }
+
+    /* Header / hero */
+    header{ padding:2.25rem 0 1.25rem; text-align:center; }
+    .avatar{
+      width:140px; height:140px; border-radius:50%;
+      overflow:hidden; margin:0 auto 1rem; box-shadow:0 0 0 6px #f3f3f3;
+    }
+    .avatar img{ width:100%; height:100%; object-fit:cover; display:block; }
+    h1{ color:var(--title); font-weight:700; font-size:clamp(1.6rem, 2.4vw, 2rem); margin-bottom:.25rem; }
+    .subtitle{ color:var(--subtle); font-size:clamp(1rem, 1.6vw, 1.15rem); margin-bottom:.5rem; }
+    .lead{
+      color:var(--subtle); max-width:62ch; margin:0 auto 1rem;
+    }
+
+    .hero-actions .btn{
+      border-radius:12px; padding:.6rem 1rem; font-weight:600;
+    }
+    .btn-dark:hover{ background:#222; }
+
+    .contact-mini{
+      color:var(--subtle); gap:.75rem; flex-wrap:wrap; font-size:.98rem;
+    }
+    .contact-mini a{ color:#111; text-decoration:none }
+    .contact-mini a:hover{ text-decoration:underline }
+
+    /* Sections */
+    section{ padding:1.25rem 0; }
+    .section-title{
+      color:var(--title); font-size:1.05rem; font-weight:700; letter-spacing:.3px;
+      text-transform:uppercase; margin-bottom:.5rem;
+    }
+    .section-desc{ color:var(--subtle); margin-bottom:.25rem; }
+    .divider{ border:0; border-top:1px solid var(--line); margin:1rem 0 0; }
+
+    /* Lists with comfy spacing */
+    .bullet-tight li{ margin:.3rem 0; }
+    .bullet-spaced li{ margin:.5rem 0; }
+
+    /* Experience layout: title black, sub gray on next line */
+    .exp-item strong{ color:var(--title); }
+    .exp-sub{ color:var(--subtle); font-size:.98rem; }
+
+    /* Footer */
+    footer{ border-top:1px solid var(--line); color:var(--subtle); font-size:.98rem; padding:1rem 0 2rem; text-align:center; }
+    footer a{ color:#111; text-decoration:none }
+    footer a:hover{ text-decoration:underline }
+
+    /* Make it nicely compact on mobile */
+    @media (max-width: 576px){
+      .avatar{ width:120px; height:120px; box-shadow:0 0 0 5px #f3f3f3; }
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <h1>Your Courses</h1>
-    </header>
+  <header class="wrap">
+    <div class="avatar">
+      <!-- Keep your image centered + circular -->
+      <img src="2025-09-05_11-06-10.png" alt="Mina Gabriel portrait" />
+    </div>
 
-    <nav>
-        <ul>
-            <li><a href="cisc-435.html">Machine Learning</a></li>
-            <li><a href="cisc-233.html">Essential Algorithms</a></li>
-            <!-- Add more courses as needed -->
-        </ul>
-    </nav>
+    <h1>Hello, I am Mina Gabriel.</h1>
+    <p class="subtitle">A Ph.D. Candidate, Computer Science Lecturer, &amp; Software Engineer.</p>
 
-    <main>
-        <h2>Welcome to Your Courses!</h2>
-        <p>Choose a course from the navigation menu to get started.</p>
-    </main>
+    <p class="lead">
+      I design and build intelligent systems for data platforms, mobile applications, and research-driven innovation—combining academic insight with practical development experience.
+    </p>
 
-    <footer>
-        &copy; 2023 Your Courses. All rights reserved.
-    </footer>
+<style>
+  .social-links a {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    transition: all 0.3s ease;
+    color: #fff;
+    background-color: #000;
+    text-decoration: none;
+  }
+  .social-links a:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+  }
+  .social-links a.linkedin { background-color: #0077b5; }
+  .social-links a.linkedin:hover { background-color: #005582; }
+  .social-links a.gmail { background-color: #d93025; }
+  .social-links a.gmail:hover { background-color: #a02118; }
+  .social-links a.resume { background-color: #6c757d; }
+  .social-links a.resume:hover { background-color: #495057; }
+</style>
+
+<div class="social-links d-flex justify-content-center gap-3 mt-3">
+  <!-- Gmail -->
+  <a href="mailto:developer.mina@gmail.com" class="gmail" target="_blank" rel="noopener" title="Email Me">
+    <i class="bi bi-envelope-fill"></i>
+  </a>
+
+  <!-- LinkedIn -->
+  <a href="https://www.linkedin.com/in/mina-gabriel-b9628913b/" class="linkedin" target="_blank" rel="noopener" title="LinkedIn">
+    <i class="bi bi-linkedin"></i>
+  </a>
+
+  <!-- Resume -->
+  <a href="Mina_Gabriel_Resume.pdf" class="resume" download title="Download Resume">
+    <i class="bi bi-file-earmark-arrow-down-fill"></i>
+  </a>
+</div>
+ 
+  </header>
+
+  <main class="wrap" id="content">
+    <!-- About -->
+    <section id="about">
+      <h2 class="section-title">About Me</h2>
+      <p class="section-desc">Focus: AI, Computer Vision, and scalable data platforms.</p>
+      <ul class="bullet-tight">
+        <li>Ph.D. Candidate, Lecturer, and Software Engineer building research-driven, production-grade systems.</li>
+        <li>Experience across academia and industry, including Cisco and NASA JPL collaborations.</li>
+        <li>Blend symbolic reasoning with deep learning for explainable, real-world decision-making.</li>
+      </ul>
+      <hr class="divider">
+    </section>
+
+    <!-- Experience -->
+    <section id="experience">
+      <h2 class="section-title">Experience</h2>
+      <ul class="bullet-spaced">
+        <li class="exp-item">
+          <strong>Lecturer & Coordinator</strong>
+          <div class="exp-sub">Harrisburg University — Aug 2014 — Present</div>
+        </li>
+        <li class="exp-item">
+          <strong>Software Engineer III</strong>
+          <div class="exp-sub">Cisco (Research & Engineering) — Oct 2022 — May 2023</div>
+        </li>
+        <li class="exp-item">
+          <strong>Research Assistant</strong>
+          <div class="exp-sub">NASA (JPL & Caltech) — Oct 2020 — Sep 2021</div>
+        </li>
+        <li class="exp-item">
+          <strong>Research Assistant</strong>
+          <div class="exp-sub">Temple University — Jan 2021 — Dec 2021</div>
+        </li>
+      </ul>
+      <hr class="divider">
+    </section>
+
+    <!-- Core Skills -->
+    <section id="skills">
+      <h2 class="section-title">Core Skills</h2>
+      <p class="section-desc">Titles in black; sub details in gray.</p>
+
+      <h3 class="mt-2 mb-1" style="color:#000; font-size:1.05rem;">Programming & Development</h3>
+      <p class="mb-2" style="color:var(--subtle);">Java, Kotlin, Python, C#, Node.js, JavaScript, React, Android</p>
+      <ul class="bullet-tight">
+        <li>Production Android and full-stack development.</li>
+        <li>Clean architecture, testing, CI/CD.</li>
+      </ul>
+
+      <h3 class="mt-3 mb-1" style="color:#000; font-size:1.05rem;">AI & Machine Learning</h3>
+      <p class="mb-2" style="color:var(--subtle);">Computer Vision, PyTorch, TensorFlow, OpenCV, NLP, Explainable AI, Symbolic Reasoning</p>
+      <ul class="bullet-tight">
+        <li>Sensor fusion and real-time inference pipelines.</li>
+        <li>Hybrid neuro-symbolic systems for transparency and control.</li>
+      </ul>
+
+      <h3 class="mt-3 mb-1" style="color:#000; font-size:1.05rem;">Data & Cloud</h3>
+      <p class="mb-2" style="color:var(--subtle);">PostgreSQL, NoSQL, Vector DBs, AWS, Docker, Kubernetes, Microservices</p>
+      <ul class="bullet-tight">
+        <li>Event-driven architectures & streaming analytics.</li>
+        <li>Scalable services with observability-first design.</li>
+      </ul>
+      <hr class="divider">
+    </section>
+
+    <!-- Recent Research & Projects -->
+    <section id="projects">
+      <h2 class="section-title">Recent Research & Projects</h2>
+      <ul class="bullet-spaced">
+        <li>
+          <strong>Non-Axiomatic Reasoning Systems</strong>
+          <div class="exp-sub">Temple University & NASA JPL</div>
+          <ul class="bullet-tight">
+            <li>Explainable AI combining symbolic reasoning with deep learning for autonomous decision-making.</li>
+          </ul>
+        </li>
+        <li>
+          <strong>Intelligent Event Processing System</strong>
+          <div class="exp-sub">Cisco Research</div>
+          <ul class="bullet-tight">
+            <li>Android app with multi-object tracking and speech-to-text; AWS microservices with LLM-powered reasoning.</li>
+          </ul>
+        </li>
+        <li>
+          <strong>Autonomous Safety Systems</strong>
+          <div class="exp-sub">NASA JPL Collaboration</div>
+          <ul class="bullet-tight">
+            <li>Camera/RADAR/GPS fusion; neural networks with symbolic control for real-time decisions.</li>
+          </ul>
+        </li>
+      </ul>
+      <hr class="divider">
+    </section>
+
+    <!-- Courses I Teach -->
+    <section id="courses">
+      <h2 class="section-title">Courses I Teach</h2>
+      <p class="section-desc">Representative topics and offerings.</p>
+      <ul class="bullet-spaced">
+        <li><strong>Mobile Application Development (Android)</strong> <span class="exp-sub d-block">Kotlin, Jetpack, architecture, testing</span></li>
+        <li><strong>Artificial Intelligence</strong> <span class="exp-sub d-block">Search, planning, ML fundamentals, ethics</span></li>
+        <li><strong>Computer Vision</strong> <span class="exp-sub d-block">OpenCV, deep vision, tracking & detection</span></li>
+        <li><strong>Data Structures & Algorithms</strong> <span class="exp-sub d-block">Complexity, classic structures, problem solving</span></li>
+        <li><strong>Databases</strong> <span class="exp-sub d-block">SQL/NoSQL, modeling, transactions, indexing</span></li>
+      </ul>
+      <hr class="divider">
+    </section>
+
+    <!-- Education -->
+    <section id="education">
+      <h2 class="section-title">Education</h2>
+      <ul class="bullet-spaced">
+        <li>
+          <strong>Ph.D. Candidate, Computer Science (AI)</strong>
+          <div class="exp-sub">Temple University — Jan 2020 — Present</div>
+        </li>
+        <li>
+          <strong>M.S., Information Systems Engineering</strong>
+          <div class="exp-sub">Harrisburg University — Jan 2012 — Apr 2014</div>
+        </li>
+        <li>
+          <strong>B.S., Computer Science</strong>
+          <div class="exp-sub">Arab Academy for Science & Technology — Jan 2004 — Aug 2008</div>
+        </li>
+      </ul>
+      <hr class="divider">
+    </section>
+
+    <!-- Contact (anchor) -->
+    <section id="contact">
+      <h2 class="section-title">Contact</h2>
+      <ul class="bullet-tight">
+        <li>Email:  developer.mina a-t gmail.com </li> 
+        <li>Location: Mechanicsburg, PA</li> 
+        <li>Résumé: <a href="Mina_Gabriel_Resume.pdf" download>Download Résumé</a></li>
+      </ul>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      © 2025 Mina Gabriel 
+    </div>
+  </footer>
+
+  <!-- Optional Bootstrap JS (not required for this layout) -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
