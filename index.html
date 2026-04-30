@@ -1,293 +1,1266 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Mina Gabriel — Portfolio</title>
+  <meta name="description" content="Mina Gabriel — Ph.D. Candidate in AI, Senior Applications Developer. Research in neuro-symbolic AI, RAG, and LLM reasoning." />
+  <title>Mina Gabriel — AI Researcher & Engineer</title>
 
-  <!-- Inter font -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<!-- Bootstrap Icons CDN -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
-
-  <!-- Bootstrap 5 -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
 
   <style>
-    :root{
-      --title:#000;      /* Titles black */
-      --subtle:#666;     /* Subtitles gray */
-      --line:#eee;
-      --maxw: 860px;     /* Compact center width */
+    :root[data-theme="dark"]{
+      --bg: #07070a;
+      --bg-elev: #0f0f14;
+      --bg-elev-2: #15151c;
+      --bg-glass: rgba(10, 10, 14, 0.7);
+      --text: #f5f5f7;
+      --text-muted: #a1a1aa;
+      --text-subtle: #71717a;
+      --border: #1f1f28;
+      --border-strong: #2e2e3a;
+      --accent: #a78bfa;
+      --accent-2: #22d3ee;
+      --accent-3: #f472b6;
+      --accent-glow: rgba(167,139,250,0.35);
+      --highlight-bg: rgba(167,139,250,0.12);
+      --tag-bg: #15151c;
+      --tag-text: #d4d4d8;
+      --shadow-md: 0 4px 20px rgba(0,0,0,0.4);
+      --shadow-lg: 0 20px 50px rgba(0,0,0,0.5);
+      --grid-color: rgba(255,255,255,0.03);
+    }
+    :root[data-theme="light"]{
+      --bg: #fafaf9;
+      --bg-elev: #ffffff;
+      --bg-elev-2: #f5f5f4;
+      --bg-glass: rgba(255,255,255,0.75);
+      --text: #0a0a0a;
+      --text-muted: #57534e;
+      --text-subtle: #78716c;
+      --border: #e7e5e4;
+      --border-strong: #d6d3d1;
+      --accent: #7c3aed;
+      --accent-2: #0891b2;
+      --accent-3: #db2777;
+      --accent-glow: rgba(124,58,237,0.2);
+      --highlight-bg: rgba(124,58,237,0.08);
+      --tag-bg: #f5f5f4;
+      --tag-text: #292524;
+      --shadow-md: 0 4px 16px rgba(0,0,0,0.06);
+      --shadow-lg: 0 12px 40px rgba(0,0,0,0.08);
+      --grid-color: rgba(0,0,0,0.04);
     }
 
-    html { scroll-behavior:smooth; }
+    *{ box-sizing: border-box; }
+    html{ scroll-behavior: smooth; }
     body{
-      font-family:'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
-      color:#333; background:#fff; line-height:1.55;
+      margin: 0;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.6;
+      font-size: 16px;
+      -webkit-font-smoothing: antialiased;
+      transition: background 0.3s ease, color 0.3s ease;
+      overflow-x: hidden;
+      position: relative;
     }
 
-    .wrap{ max-width:var(--maxw); margin-inline:auto; padding-inline:1.25rem; }
+    .bg-grid{
+      position: fixed; inset: 0; z-index: 0; pointer-events: none;
+      background-image:
+        linear-gradient(var(--grid-color) 1px, transparent 1px),
+        linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
+      background-size: 56px 56px;
+      mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, #000 30%, transparent 80%);
+      -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, #000 30%, transparent 80%);
+    }
+    .bg-glow{
+      position: fixed; z-index: 0; pointer-events: none;
+      width: 600px; height: 600px;
+      border-radius: 50%;
+      filter: blur(120px);
+      opacity: 0.5;
+    }
+    .bg-glow.one{
+      top: -200px; left: -100px;
+      background: radial-gradient(circle, var(--accent) 0%, transparent 70%);
+      animation: float1 20s ease-in-out infinite;
+    }
+    .bg-glow.two{
+      top: 30%; right: -200px;
+      background: radial-gradient(circle, var(--accent-2) 0%, transparent 70%);
+      animation: float2 25s ease-in-out infinite;
+    }
+    .bg-glow.three{
+      bottom: -200px; left: 20%;
+      background: radial-gradient(circle, var(--accent-3) 0%, transparent 70%);
+      opacity: 0.3;
+      animation: float3 30s ease-in-out infinite;
+    }
+    @keyframes float1{
+      0%,100%{ transform: translate(0,0); }
+      50%{ transform: translate(50px, 80px); }
+    }
+    @keyframes float2{
+      0%,100%{ transform: translate(0,0); }
+      50%{ transform: translate(-80px, 60px); }
+    }
+    @keyframes float3{
+      0%,100%{ transform: translate(0,0); }
+      50%{ transform: translate(60px, -40px); }
+    }
+    [data-theme="light"] .bg-glow{ opacity: 0.15; }
 
-    /* Header / hero */
-    header{ padding:2.25rem 0 1.25rem; text-align:center; }
+    .nav{
+      position: fixed; top: 0; left: 0; right: 0;
+      z-index: 100;
+      backdrop-filter: blur(24px) saturate(180%);
+      -webkit-backdrop-filter: blur(24px) saturate(180%);
+      background: var(--bg-glass);
+      border-bottom: 1px solid var(--border);
+      transition: all 0.3s ease;
+    }
+    .nav-inner{
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 0.85rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+    .nav-brand{
+      font-weight: 700;
+      font-size: 0.95rem;
+      letter-spacing: -0.01em;
+      color: var(--text);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+    .nav-brand .dot{
+      width: 8px; height: 8px;
+      background: #22c55e;
+      border-radius: 50%;
+      box-shadow: 0 0 0 4px rgba(34,197,94,0.18), 0 0 12px rgba(34,197,94,0.6);
+      animation: pulse 2s ease-in-out infinite;
+    }
+    @keyframes pulse{
+      0%,100%{ box-shadow: 0 0 0 4px rgba(34,197,94,0.18), 0 0 12px rgba(34,197,94,0.6);}
+      50%{ box-shadow: 0 0 0 8px rgba(34,197,94,0), 0 0 16px rgba(34,197,94,0.8);}
+    }
+    .nav-links{ display: flex; gap: 0.25rem; align-items: center; }
+    .nav-links a{
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.88rem;
+      font-weight: 500;
+      padding: 0.5rem 0.85rem;
+      border-radius: 8px;
+      transition: all 0.2s ease;
+    }
+    .nav-links a:hover{ color: var(--text); background: var(--tag-bg);}
+    .nav-links a.active{ color: var(--text); background: var(--tag-bg);}
+    .theme-toggle{
+      background: var(--tag-bg);
+      border: 1px solid var(--border);
+      color: var(--text);
+      width: 36px; height: 36px;
+      border-radius: 8px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s ease;
+      font-size: 1rem;
+    }
+    .theme-toggle:hover{ background: var(--border); transform: scale(1.05); }
+    @media (max-width: 640px){
+      .nav-links a:not(.nav-cta){ display: none; }
+    }
+
+    .container{
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero{
+      padding: 7rem 0 3rem;
+      text-align: center;
+      position: relative;
+    }
+    .avatar-wrap{
+      position: relative;
+      width: 140px; height: 140px;
+      margin: 0 auto 1.75rem;
+    }
+    .avatar-wrap::before{
+      content: '';
+      position: absolute;
+      inset: -8px;
+      border-radius: 50%;
+      background: conic-gradient(from 0deg, var(--accent), var(--accent-2), var(--accent-3), var(--accent));
+      opacity: 0.7;
+      filter: blur(8px);
+      z-index: 0;
+      animation: spin 8s linear infinite;
+    }
+    @keyframes spin{ to{ transform: rotate(360deg); } }
     .avatar{
-      width:140px; height:140px; border-radius:50%;
-      overflow:hidden; margin:0 auto 1rem; box-shadow:0 0 0 6px #f3f3f3;
+      position: relative;
+      z-index: 1;
+      width: 100%; height: 100%;
+      border-radius: 50%;
+      overflow: hidden;
+      background: var(--bg);
+      box-shadow: var(--shadow-lg), 0 0 0 4px var(--bg);
+      transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
     }
+    .avatar:hover{ transform: scale(1.04); }
     .avatar img{ width:100%; height:100%; object-fit:cover; display:block; }
-    h1{ color:var(--title); font-weight:700; font-size:clamp(1.6rem, 2.4vw, 2rem); margin-bottom:.25rem; }
-    .subtitle{ color:var(--subtle); font-size:clamp(1rem, 1.6vw, 1.15rem); margin-bottom:.5rem; }
-    .lead{
-      color:var(--subtle); max-width:62ch; margin:0 auto 1rem;
+    .avatar-badge{
+      position: absolute;
+      bottom: 0; right: -4px;
+      z-index: 2;
+      background: var(--bg-elev);
+      border: 1px solid var(--border-strong);
+      border-radius: 999px;
+      padding: 0.3rem 0.65rem;
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: var(--text);
+      box-shadow: var(--shadow-md);
+      display: inline-flex; align-items: center; gap: 0.3rem;
+    }
+    .avatar-badge::before{
+      content: '';
+      width: 6px; height: 6px;
+      background: #22c55e;
+      border-radius: 50%;
+      box-shadow: 0 0 8px #22c55e;
     }
 
-    .hero-actions .btn{
-      border-radius:12px; padding:.6rem 1rem; font-weight:600;
+    h1{
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 700;
+      letter-spacing: -0.035em;
+      margin: 0 0 0.5rem;
+      line-height: 1.1;
+      background: linear-gradient(135deg, var(--text) 0%, var(--text-muted) 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
-    .btn-dark:hover{ background:#222; }
-
-    .contact-mini{
-      color:var(--subtle); gap:.75rem; flex-wrap:wrap; font-size:.98rem;
+    .hero-tag{
+      color: var(--text-muted);
+      font-size: 1rem;
+      font-weight: 500;
+      margin-bottom: 1.5rem;
     }
-    .contact-mini a{ color:#111; text-decoration:none }
-    .contact-mini a:hover{ text-decoration:underline }
+    .hero-tag .accent{
+      color: var(--text);
+      font-weight: 600;
+      background: linear-gradient(135deg, var(--accent) 0%, var(--accent-2) 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .hero-lead{
+      color: var(--text-muted);
+      font-size: 1.02rem;
+      max-width: 56ch;
+      margin: 0 auto 2rem;
+      line-height: 1.65;
+    }
 
-    /* Sections */
-    section{ padding:1.25rem 0; }
+    .social{
+      display: flex;
+      justify-content: center;
+      gap: 0.6rem;
+      flex-wrap: wrap;
+    }
+    .social a{
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.6rem 1rem;
+      border-radius: 10px;
+      background: var(--bg-elev);
+      border: 1px solid var(--border);
+      color: var(--text);
+      text-decoration: none;
+      font-size: 0.88rem;
+      font-weight: 500;
+      transition: all 0.2s ease;
+      box-shadow: var(--shadow-md);
+    }
+    .social a:hover{
+      transform: translateY(-2px);
+      border-color: var(--border-strong);
+    }
+    .social a.primary{
+      background: linear-gradient(135deg, var(--accent) 0%, var(--accent-2) 100%);
+      color: #fff;
+      border-color: transparent;
+      box-shadow: 0 4px 20px var(--accent-glow);
+    }
+    .social a.primary:hover{
+      box-shadow: 0 6px 28px var(--accent-glow);
+      transform: translateY(-2px);
+    }
+
+    section{
+      padding: 3.5rem 0;
+      scroll-margin-top: 5rem;
+    }
+    .section-head{
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 1.75rem;
+    }
+    .section-num{
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.78rem;
+      color: var(--accent);
+      font-weight: 600;
+    }
     .section-title{
-      color:var(--title); font-size:1.05rem; font-weight:700; letter-spacing:.3px;
-      text-transform:uppercase; margin-bottom:.5rem;
+      font-size: 1.4rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin: 0;
     }
-    .section-desc{ color:var(--subtle); margin-bottom:.25rem; }
-    .divider{ border:0; border-top:1px solid var(--line); margin:1rem 0 0; }
+    .section-line{
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(90deg, var(--border) 0%, transparent 100%);
+    }
 
-    /* Lists with comfy spacing */
-    .bullet-tight li{ margin:.3rem 0; }
-    .bullet-spaced li{ margin:.5rem 0; }
+    .about-text{
+      color: var(--text-muted);
+      font-size: 1rem;
+      line-height: 1.75;
+      margin-bottom: 1.5rem;
+    }
+    .about-text strong{ color: var(--text); font-weight: 600; }
+    .about-text a{
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+      border-bottom: 1px dashed var(--border-strong);
+      transition: all 0.2s ease;
+    }
+    .about-text a:hover{ border-bottom-color: var(--accent); }
 
-    /* Experience layout: title black, sub gray on next line */
-    .exp-item strong{ color:var(--title); }
-    .exp-sub{ color:var(--subtle); font-size:.98rem; }
+    .stats{
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0.75rem;
+      margin-top: 1.5rem;
+    }
+    .stat{
+      background: var(--bg-elev);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1rem;
+      text-align: center;
+      transition: all 0.25s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    .stat::before{
+      content: '';
+      position: absolute;
+      top: 0; left: -100%;
+      width: 100%; height: 1px;
+      background: linear-gradient(90deg, transparent, var(--accent), transparent);
+      transition: left 0.6s ease;
+    }
+    .stat:hover{
+      border-color: var(--border-strong);
+      transform: translateY(-3px);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.3);
+    }
+    .stat:hover::before{ left: 100%; }
+    .stat-num{
+      font-size: 1.6rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      background: linear-gradient(135deg, var(--text) 0%, var(--accent) 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .stat-label{
+      font-size: 0.72rem;
+      color: var(--text-subtle);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-top: 0.25rem;
+      font-family: 'JetBrains Mono', monospace;
+    }
+    @media (max-width: 540px){
+      .stats{ grid-template-columns: repeat(2, 1fr); }
+    }
 
-    /* Footer */
-    footer{ border-top:1px solid var(--line); color:var(--subtle); font-size:.98rem; padding:1rem 0 2rem; text-align:center; }
-    footer a{ color:#111; text-decoration:none }
-    footer a:hover{ text-decoration:underline }
+    .research-list{
+      display: flex;
+      flex-direction: column;
+      gap: 0.7rem;
+    }
+    .research-item{
+      background: var(--bg-elev);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.15rem 1.25rem;
+      transition: all 0.25s ease;
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .research-item::after{
+      content: '';
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      width: 3px;
+      background: linear-gradient(180deg, var(--accent) 0%, var(--accent-2) 100%);
+      opacity: 0;
+      transition: opacity 0.25s ease;
+    }
+    .research-item:hover{
+      border-color: var(--border-strong);
+      transform: translateX(4px);
+    }
+    .research-item:hover::after{ opacity: 1; }
+    .research-icon{
+      flex-shrink: 0;
+      width: 38px; height: 38px;
+      background: linear-gradient(135deg, var(--bg-elev-2) 0%, var(--tag-bg) 100%);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      color: var(--accent);
+    }
+    .research-body h4{
+      margin: 0 0 0.2rem;
+      font-size: 0.98rem;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+    }
+    .research-body p{
+      margin: 0;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      line-height: 1.55;
+    }
 
-    /* Make it nicely compact on mobile */
-    @media (max-width: 576px){
-      .avatar{ width:120px; height:120px; box-shadow:0 0 0 5px #f3f3f3; }
+    .pubs{ display: flex; flex-direction: column; gap: 0; }
+    .pub{
+      padding: 1.25rem 0;
+      border-bottom: 1px solid var(--border);
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      gap: 1rem;
+      align-items: start;
+      transition: all 0.2s ease;
+    }
+    .pub:hover{
+      padding-left: 0.5rem;
+      padding-right: 0.5rem;
+      background: var(--bg-elev);
+      border-radius: 8px;
+      border-bottom-color: transparent;
+    }
+    .pub:last-child{ border-bottom: none; }
+    .pub-year{
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.78rem;
+      color: var(--accent);
+      font-weight: 600;
+      padding-top: 0.15rem;
+      min-width: 3rem;
+    }
+    .pub-body{ min-width: 0; }
+    .pub-title{
+      font-size: 0.98rem;
+      font-weight: 600;
+      color: var(--text);
+      text-decoration: none;
+      letter-spacing: -0.01em;
+      line-height: 1.4;
+      display: block;
+      margin-bottom: 0.3rem;
+      transition: color 0.2s ease;
+    }
+    a.pub-title:hover{ color: var(--accent); }
+    .pub-venue{
+      color: var(--text-subtle);
+      font-size: 0.85rem;
+      font-style: italic;
+    }
+    .pub-cite{
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      padding: 0.25rem 0.6rem;
+      background: var(--tag-bg);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      white-space: nowrap;
+      align-self: start;
+      margin-top: 0.15rem;
+      font-weight: 500;
+    }
+    .pub-cite.hot{
+      color: var(--accent);
+      border-color: var(--accent);
+      background: var(--highlight-bg);
+    }
+    @media (max-width: 600px){
+      .pub{ grid-template-columns: auto 1fr; }
+      .pub-cite{ grid-column: 2; justify-self: start; margin-top: 0.5rem; }
+    }
+    .scholar-note{
+      margin-top: 1.5rem;
+      padding: 1.1rem 1.35rem;
+      background: linear-gradient(135deg, var(--bg-elev) 0%, var(--bg-elev-2) 100%);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+    .scholar-note a{
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.4rem 0.8rem;
+      background: var(--bg);
+      border: 1px solid var(--border-strong);
+      border-radius: 8px;
+      transition: all 0.2s ease;
+    }
+    .scholar-note a:hover{
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .timeline{
+      position: relative;
+      padding-left: 1.75rem;
+    }
+    .timeline::before{
+      content: '';
+      position: absolute;
+      left: 0.5rem; top: 0.5rem; bottom: 0.5rem;
+      width: 1px;
+      background: linear-gradient(180deg, var(--accent) 0%, var(--border) 50%, transparent 100%);
+    }
+    .tl-item{
+      position: relative;
+      padding-bottom: 1.5rem;
+    }
+    .tl-item:last-child{ padding-bottom: 0; }
+    .tl-item::before{
+      content: '';
+      position: absolute;
+      left: -1.7rem; top: 0.5rem;
+      width: 11px; height: 11px;
+      border-radius: 50%;
+      background: var(--bg);
+      border: 2px solid var(--border-strong);
+    }
+    .tl-item.current::before{
+      background: var(--accent);
+      border-color: var(--accent);
+      box-shadow: 0 0 0 4px var(--accent-glow), 0 0 12px var(--accent);
+    }
+    .tl-role{
+      font-weight: 600;
+      color: var(--text);
+      font-size: 0.98rem;
+      letter-spacing: -0.01em;
+    }
+    .tl-org{
+      color: var(--text-muted);
+      font-size: 0.92rem;
+      margin-top: 0.1rem;
+    }
+    .tl-date{
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.76rem;
+      color: var(--text-subtle);
+      margin-top: 0.3rem;
+    }
+
+    .skills-grid{
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 0.85rem;
+    }
+    .skill-card{
+      background: var(--bg-elev);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.15rem;
+      transition: all 0.25s ease;
+    }
+    .skill-card:hover{
+      border-color: var(--border-strong);
+      transform: translateY(-3px);
+      box-shadow: 0 12px 28px rgba(0,0,0,0.3);
+    }
+    .skill-card h4{
+      margin: 0 0 0.7rem;
+      font-size: 0.92rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .skill-card h4 i{ color: var(--accent); font-size: 1rem; }
+    .tags{ display: flex; flex-wrap: wrap; gap: 0.35rem; }
+    .tag{
+      background: var(--tag-bg);
+      color: var(--tag-text);
+      padding: 0.22rem 0.6rem;
+      border-radius: 5px;
+      font-size: 0.75rem;
+      font-weight: 500;
+      font-family: 'JetBrains Mono', monospace;
+      border: 1px solid var(--border);
+      transition: all 0.2s ease;
+    }
+    .tag:hover{
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .courses-grid{
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 0.7rem;
+    }
+    .course{
+      background: var(--bg-elev);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 0.95rem 1.05rem;
+      transition: all 0.2s ease;
+    }
+    .course:hover{
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+    .course-name{
+      font-weight: 600;
+      font-size: 0.92rem;
+      margin-bottom: 0.18rem;
+    }
+    .course-desc{
+      color: var(--text-subtle);
+      font-size: 0.8rem;
+    }
+
+    .edu-list{
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+    .edu{
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      padding: 1.1rem 1.25rem;
+      background: var(--bg-elev);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      gap: 1rem;
+      transition: all 0.2s ease;
+    }
+    .edu:hover{
+      border-color: var(--border-strong);
+      transform: translateX(2px);
+    }
+    .edu-info h4{
+      margin: 0 0 0.18rem;
+      font-size: 0.95rem;
+      font-weight: 600;
+    }
+    .edu-info p{
+      margin: 0;
+      color: var(--text-muted);
+      font-size: 0.88rem;
+    }
+    .edu-date{
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.76rem;
+      color: var(--accent);
+      white-space: nowrap;
+      font-weight: 500;
+    }
+
+    footer{
+      border-top: 1px solid var(--border);
+      padding: 2.5rem 0;
+      text-align: center;
+      color: var(--text-subtle);
+      font-size: 0.85rem;
+      margin-top: 3rem;
+      position: relative;
+      z-index: 1;
+    }
+    footer .footer-row{
+      display: flex;
+      justify-content: center;
+      gap: 1.25rem;
+      margin-bottom: 0.6rem;
+      flex-wrap: wrap;
+    }
+    footer a{
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+    footer a:hover{ color: var(--accent); }
+    .built-with{
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      color: var(--text-subtle);
+      margin-top: 0.5rem;
+    }
+
+    .reveal{
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.in{
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    ::selection{
+      background: var(--accent);
+      color: var(--bg);
     }
   </style>
 </head>
 <body>
-  <header class="wrap">
-    <div class="avatar">
-      <!-- Keep your image centered + circular -->
-      <img src="2025-09-05_11-06-10.png" alt="Mina Gabriel portrait" />
+
+  <div class="bg-grid"></div>
+  <div class="bg-glow one"></div>
+  <div class="bg-glow two"></div>
+  <div class="bg-glow three"></div>
+
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="#top" class="nav-brand">
+        <span class="dot"></span>
+        Mina Gabriel
+      </a>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#research">Research</a>
+        <a href="#publications">Papers</a>
+        <a href="#experience">Work</a>
+        <a href="#contact" class="nav-cta">Contact</a>
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+          <i class="bi bi-sun-fill" id="themeIcon"></i>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <header id="top" class="container hero">
+    <div class="avatar-wrap reveal">
+      <div class="avatar">
+        <img src="2025-09-05_11-06-10.png" alt="Mina Gabriel" />
+      </div>
+      <span class="avatar-badge">Available</span>
     </div>
 
-    <h1>Hello, I am Mina Gabriel.</h1>
-    <p class="subtitle">A Ph.D. Candidate, Computer Science Lecturer, &amp; Software Engineer.</p>
-
-    <p class="lead">
-      I design and build intelligent systems for data platforms, mobile applications, and research-driven innovation—combining academic insight with practical development experience.
+    <h1 class="reveal">Mina Gabriel</h1>
+    <p class="hero-tag reveal">
+      <span class="accent">Ph.D. Candidate in AI</span> · Senior Applications Developer
+    </p>
+    <p class="hero-lead reveal">
+      I build intelligent systems that bridge symbolic reasoning and deep learning — from
+      retrieval-augmented LLMs and metacognitive confidence estimation to enterprise data
+      platforms serving public-sector workflows in Pennsylvania.
     </p>
 
-<style>
-  .social-links a {
-    width: 48px;
-    height: 48px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.3rem;
-    transition: all 0.3s ease;
-    color: #fff;
-    background-color: #000;
-    text-decoration: none;
-  }
-  .social-links a:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
-  }
-  .social-links a.linkedin { background-color: #0077b5; }
-  .social-links a.linkedin:hover { background-color: #005582; }
-  .social-links a.gmail { background-color: #d93025; }
-  .social-links a.gmail:hover { background-color: #a02118; }
-  .social-links a.resume { background-color: #6c757d; }
-  .social-links a.resume:hover { background-color: #495057; }
-</style>
-
-<div class="social-links d-flex justify-content-center gap-3 mt-3">
-  <!-- Gmail -->
-  <a href="mailto:developer.mina@gmail.com" class="gmail" target="_blank" rel="noopener" title="Email Me">
-    <i class="bi bi-envelope-fill"></i>
-  </a>
-
-  <!-- LinkedIn -->
-  <a href="https://www.linkedin.com/in/mina-gabriel-b9628913b/" class="linkedin" target="_blank" rel="noopener" title="LinkedIn">
-    <i class="bi bi-linkedin"></i>
-  </a>
-
-  <!-- Resume -->
-  <a href="Mina_Gabriel_Resume.pdf" class="resume" download title="Download Resume">
-    <i class="bi bi-file-earmark-arrow-down-fill"></i>
-  </a>
-</div>
- 
+    <div class="social reveal">
+      <a href="mailto:developer.mina@gmail.com" class="primary">
+        <i class="bi bi-envelope-fill"></i> Email
+      </a>
+      <a href="https://www.linkedin.com/in/mina-gabriel-b9628913b/" target="_blank" rel="noopener">
+        <i class="bi bi-linkedin"></i> LinkedIn
+      </a>
+      <a href="https://scholar.google.com/citations?user=Ff1MB9cAAAAJ&hl=en" target="_blank" rel="noopener">
+        <i class="bi bi-mortarboard-fill"></i> Scholar
+      </a>
+      <a href="https://github.com/MinaGabriel" target="_blank" rel="noopener">
+        <i class="bi bi-github"></i> GitHub
+      </a>
+      <a href="Mina_Gabriel_Resume.pdf" download>
+        <i class="bi bi-file-earmark-arrow-down-fill"></i> Résumé
+      </a>
+    </div>
   </header>
 
-  <main class="wrap" id="content">
-    <!-- About -->
-    <section id="about">
-      <h2 class="section-title">About Me</h2>
-      <p class="section-desc">Focus: AI, Computer Vision, and scalable data platforms.</p>
-      <ul class="bullet-tight">
-        <li>Ph.D. Candidate, Lecturer, and Software Engineer building research-driven, production-grade systems.</li>
-        <li>Experience across academia and industry, including Cisco and NASA JPL collaborations.</li>
-        <li>Blend symbolic reasoning with deep learning for explainable, real-world decision-making.</li>
-      </ul>
-      <hr class="divider">
+  <main class="container">
+
+    <section id="about" class="reveal">
+      <div class="section-head">
+        <span class="section-num">01</span>
+        <h2 class="section-title">About</h2>
+        <span class="section-line"></span>
+      </div>
+      <p class="about-text">
+        I'm a <strong>Data Scientist and AI/ML engineer</strong> currently serving as Senior
+        Applications Developer for the <strong>Commonwealth of Pennsylvania</strong>, where I lead
+        technical delivery for CWDS / PA CareerLink — an enterprise workforce platform supporting
+        multiple state agencies.
+      </p>
+      <p class="about-text">
+        In parallel, I'm completing my Ph.D. at <strong>Temple University</strong> with
+        Prof. Pei Wang, researching neuro-symbolic reasoning, retrieval-augmented generation,
+        and metacognitive confidence in large language models. I've previously contributed
+        applied AI research at <strong>Cisco</strong> and <strong>NASA / JPL</strong>, and
+        taught computer science at <strong>Harrisburg University</strong> from 2014 through 2026.
+      </p>
+
+      <div class="stats">
+        <div class="stat">
+          <div class="stat-num">9</div>
+          <div class="stat-label">Publications</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">21</div>
+          <div class="stat-label">Citations</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">11+</div>
+          <div class="stat-label">Years Teaching</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">5</div>
+          <div class="stat-label">Research Orgs</div>
+        </div>
+      </div>
     </section>
 
-    <!-- Experience -->
-    <section id="experience">
-      <h2 class="section-title">Experience</h2>
-      <ul class="bullet-spaced">
-        <li class="exp-item">
-          <strong>Lecturer & Coordinator</strong>
-          <div class="exp-sub">Harrisburg University — Aug 2014 — Present</div>
-        </li>
-        <li class="exp-item">
-          <strong>Software Engineer III</strong>
-          <div class="exp-sub">Cisco (Research & Engineering) — Oct 2022 — May 2023</div>
-        </li>
-        <li class="exp-item">
-          <strong>Research Assistant & Software Engineer</strong>
-          <div class="exp-sub">NASA (JPL & Caltech) — Oct 2020 — Sep 2021</div>
-        </li>
-        <li class="exp-item">
-          <strong>Research Assistant</strong>
-          <div class="exp-sub">Temple University — Jan 2021 — Dec 2021</div>
-        </li>
-      </ul>
-      <hr class="divider">
+    <section id="research" class="reveal">
+      <div class="section-head">
+        <span class="section-num">02</span>
+        <h2 class="section-title">Research Interests</h2>
+        <span class="section-line"></span>
+      </div>
+      <div class="research-list">
+        <div class="research-item">
+          <div class="research-icon"><i class="bi bi-cpu-fill"></i></div>
+          <div class="research-body">
+            <h4>Neuro-Symbolic AI &amp; NARS</h4>
+            <p>Combining the Non-Axiomatic Reasoning System with deep neural networks for explainable, resource-bounded inference under uncertainty.</p>
+          </div>
+        </div>
+        <div class="research-item">
+          <div class="research-icon"><i class="bi bi-search-heart"></i></div>
+          <div class="research-body">
+            <h4>Retrieval-Augmented Generation (RAG)</h4>
+            <p>Adaptive RAG with metacognitive controllers — separating capability, stability, and entity-familiarity signals to decide <em>when</em> to retrieve.</p>
+          </div>
+        </div>
+        <div class="research-item">
+          <div class="research-icon"><i class="bi bi-bar-chart-line-fill"></i></div>
+          <div class="research-body">
+            <h4>LLM Confidence &amp; Uncertainty</h4>
+            <p>Self-consistency, aleatoric and epistemic uncertainty estimation grounded in Bandura's self-efficacy theory and NARS truth values.</p>
+          </div>
+        </div>
+        <div class="research-item">
+          <div class="research-icon"><i class="bi bi-translate"></i></div>
+          <div class="research-body">
+            <h4>Language Grounding &amp; Semantic Gap</h4>
+            <p>Why language grounding remains unsolved between human and artificial agents — and neuro-symbolic pipelines that translate natural language to executable Narsese.</p>
+          </div>
+        </div>
+        <div class="research-item">
+          <div class="research-icon"><i class="bi bi-camera-video-fill"></i></div>
+          <div class="research-body">
+            <h4>Computer Vision &amp; Perception</h4>
+            <p>Real-time object detection, multi-object tracking, and sensor fusion (camera / RADAR / GPS) for autonomous and assistive systems.</p>
+          </div>
+        </div>
+      </div>
     </section>
 
-    <!-- Core Skills -->
-    <section id="skills">
-      <h2 class="section-title">Core Skills</h2>
-      <p class="section-desc">Titles in black; sub details in gray.</p>
+    <section id="publications" class="reveal">
+      <div class="section-head">
+        <span class="section-num">03</span>
+        <h2 class="section-title">Selected Publications</h2>
+        <span class="section-line"></span>
+      </div>
+      <div class="pubs">
 
-      <h3 class="mt-2 mb-1" style="color:#000; font-size:1.05rem;">Programming & Development</h3>
-      <p class="mb-2" style="color:var(--subtle);">Java, Kotlin, Python, C#, Node.js, JavaScript, React, Android</p>
-      <ul class="bullet-tight">
-        <li>Production Android and full-stack development.</li>
-        <li>Clean architecture, testing, CI/CD.</li>
-      </ul>
+        <article class="pub">
+          <span class="pub-year">2026</span>
+          <div class="pub-body">
+            <a href="https://scholar.google.com/citations?user=Ff1MB9cAAAAJ&hl=en" target="_blank" rel="noopener" class="pub-title">
+              From Natural Language to Executable Narsese: A Neuro-Symbolic Benchmark and Pipeline for Reasoning with NARS
+            </a>
+            <span class="pub-venue">M. Gabriel, P. Wang · arXiv preprint</span>
+          </div>
+          <span class="pub-cite hot">new</span>
+        </article>
 
-      <h3 class="mt-3 mb-1" style="color:#000; font-size:1.05rem;">AI & Machine Learning</h3>
-      <p class="mb-2" style="color:var(--subtle);">Computer Vision, PyTorch, TensorFlow, OpenCV, NLP, Explainable AI, Symbolic Reasoning</p>
-      <ul class="bullet-tight">
-        <li>Sensor fusion and real-time inference pipelines.</li>
-        <li>Hybrid neuro-symbolic systems for transparency and control.</li>
-      </ul>
+        <article class="pub">
+          <span class="pub-year">2025</span>
+          <div class="pub-body">
+            <span class="pub-title">The Semantic Gap Between Human and Artificial Agents: Why Language Grounding Remains Unsolved</span>
+            <span class="pub-venue">M. Gabriel</span>
+          </div>
+          <span class="pub-cite">—</span>
+        </article>
 
-      <h3 class="mt-3 mb-1" style="color:#000; font-size:1.05rem;">Data & Cloud</h3>
-      <p class="mb-2" style="color:var(--subtle);">PostgreSQL, NoSQL, Vector DBs, AWS, Docker, Kubernetes, Microservices</p>
-      <ul class="bullet-tight">
-        <li>Event-driven architectures & streaming analytics.</li>
-        <li>Scalable services with observability-first design.</li>
-      </ul>
-      <hr class="divider">
+        <article class="pub">
+          <span class="pub-year">2023</span>
+          <div class="pub-body">
+            <span class="pub-title">"Winning could mean success, yet losing doesn't mean failure" — Using a mobile serious game to facilitate science learning in middle school</span>
+            <span class="pub-venue">S. Liu, B. Grey, M. Gabriel · Frontiers in Education 8, 1164462</span>
+          </div>
+          <span class="pub-cite">4 cites</span>
+        </article>
+
+        <article class="pub">
+          <span class="pub-year">2023</span>
+          <div class="pub-body">
+            <span class="pub-title">NARS in TruePal: a trusted and explainable AGI partner for first responders</span>
+            <span class="pub-venue">C. Hahm, M. Gabriel, P. Hammer, P. Isaev, P. Wang · Tech. Report 19, Temple AGI Team</span>
+          </div>
+          <span class="pub-cite">2 cites</span>
+        </article>
+
+        <article class="pub">
+          <span class="pub-year">2023</span>
+          <div class="pub-body">
+            <span class="pub-title">Automated spatiotemporal modeling for real-time data-driven actionable insights</span>
+            <span class="pub-venue">H. Latapie, M. Gabriel, S. Srinivasan, R. Kompella, K. R. Thórisson, P. Wang · SAI Intelligent Systems Conference</span>
+          </div>
+          <span class="pub-cite">1 cite</span>
+        </article>
+
+        <article class="pub">
+          <span class="pub-year">2022</span>
+          <div class="pub-body">
+            <span class="pub-title">Hybrid AI for IoT Actionable Insights &amp; Real-Time Data-Driven Networks</span>
+            <span class="pub-venue">H. Latapie, M. Gabriel, R. Kompella · Int'l Workshop on Self-Supervised Learning</span>
+          </div>
+          <span class="pub-cite hot">7 cites</span>
+        </article>
+
+        <article class="pub">
+          <span class="pub-year">2020</span>
+          <div class="pub-body">
+            <span class="pub-title">Wildlife Detection and Recognition in Digital Images Using YOLOv3</span>
+            <span class="pub-venue">M. Gabriel, S. Cha, N. Y. B. Al-Nakash, D. Yun · IEEE Cloud Summit</span>
+          </div>
+          <span class="pub-cite hot">7 cites</span>
+        </article>
+
+      </div>
+
+      <div class="scholar-note">
+        <span><strong style="color:var(--text);">21 citations</strong> · h-index 3 · 9 articles</span>
+        <a href="https://scholar.google.com/citations?user=Ff1MB9cAAAAJ&hl=en" target="_blank" rel="noopener">
+          View on Google Scholar <i class="bi bi-arrow-up-right"></i>
+        </a>
+      </div>
     </section>
 
-    <!-- Recent Research & Projects -->
-    <section id="projects">
-      <h2 class="section-title">Recent Research & Projects</h2>
-      <ul class="bullet-spaced">
-        <li>
-          <strong>Non-Axiomatic Reasoning Systems</strong>
-          <div class="exp-sub">Temple University & NASA JPL</div>
-          <ul class="bullet-tight">
-            <li>Explainable AI combining symbolic reasoning with deep learning for autonomous decision-making.</li>
-          </ul>
-        </li>
-        <li>
-          <strong>Intelligent Event Processing System</strong>
-          <div class="exp-sub">Cisco Research</div>
-          <ul class="bullet-tight">
-            <li>Android app with multi-object tracking and speech-to-text; AWS microservices with LLM-powered reasoning.</li>
-          </ul>
-        </li>
-        <li>
-          <strong>Autonomous Safety Systems</strong>
-          <div class="exp-sub">NASA JPL Collaboration</div>
-          <ul class="bullet-tight">
-            <li>Camera/RADAR/GPS fusion; neural networks with symbolic control for real-time decisions.</li>
-          </ul>
-        </li>
-      </ul>
-      <hr class="divider">
+    <section id="experience" class="reveal">
+      <div class="section-head">
+        <span class="section-num">04</span>
+        <h2 class="section-title">Experience</h2>
+        <span class="section-line"></span>
+      </div>
+      <div class="timeline">
+        <div class="tl-item current">
+          <div class="tl-role">Senior Applications Developer</div>
+          <div class="tl-org">Commonwealth of Pennsylvania — Harrisburg, PA</div>
+          <div class="tl-date">Jan 2026 — Present</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-role">Lecturer, Computer Science</div>
+          <div class="tl-org">Harrisburg University of Science &amp; Technology</div>
+          <div class="tl-date">Aug 2014 — Jan 2026</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-role">Software Engineer III · Research &amp; Engineering</div>
+          <div class="tl-org">Cisco</div>
+          <div class="tl-date">Oct 2022 — May 2023</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-role">Research Assistant &amp; Software Engineer</div>
+          <div class="tl-org">NASA · JPL &amp; Caltech collaboration</div>
+          <div class="tl-date">Oct 2020 — Sep 2021</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-role">Research Assistant, Artificial Intelligence</div>
+          <div class="tl-org">Temple University — with Dr. Pei Wang</div>
+          <div class="tl-date">Jan 2021 — Dec 2021</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-role">Software Engineer (Full-Stack)</div>
+          <div class="tl-org">The APAK Group — Hershey Center for Applied Research</div>
+          <div class="tl-date">Jan 2012 — Feb 2015</div>
+        </div>
+      </div>
     </section>
 
-    <!-- Courses I Teach -->
-    <section id="courses">
-      <h2 class="section-title">Courses I Teach</h2>
-      <p class="section-desc">Representative topics and offerings.</p>
-      <ul class="bullet-spaced">
-        <li><strong>Mobile Application Development (Android)</strong> <span class="exp-sub d-block">Kotlin, Jetpack, architecture, testing</span></li>
-        <li><strong>Artificial Intelligence</strong> <span class="exp-sub d-block">Search, planning, ML fundamentals, ethics</span></li>
-        <li><strong>Computer Vision</strong> <span class="exp-sub d-block">OpenCV, deep vision, tracking & detection</span></li>
-        <li><strong>Data Structures & Algorithms</strong> <span class="exp-sub d-block">Complexity, classic structures, problem solving</span></li>
-        <li><strong>Databases</strong> <span class="exp-sub d-block">SQL/NoSQL, modeling, transactions, indexing</span></li>
-      </ul>
-      <hr class="divider">
+    <section id="skills" class="reveal">
+      <div class="section-head">
+        <span class="section-num">05</span>
+        <h2 class="section-title">Tech Stack</h2>
+        <span class="section-line"></span>
+      </div>
+      <div class="skills-grid">
+        <div class="skill-card">
+          <h4><i class="bi bi-code-slash"></i> Languages</h4>
+          <div class="tags">
+            <span class="tag">Python</span>
+            <span class="tag">C# / VB.NET</span>
+            <span class="tag">Java</span>
+            <span class="tag">Kotlin</span>
+            <span class="tag">TypeScript</span>
+            <span class="tag">Node.js</span>
+          </div>
+        </div>
+        <div class="skill-card">
+          <h4><i class="bi bi-robot"></i> AI / ML</h4>
+          <div class="tags">
+            <span class="tag">PyTorch</span>
+            <span class="tag">TensorFlow</span>
+            <span class="tag">OpenCV</span>
+            <span class="tag">RAG</span>
+            <span class="tag">LLMs</span>
+            <span class="tag">vLLM</span>
+            <span class="tag">NARS</span>
+          </div>
+        </div>
+        <div class="skill-card">
+          <h4><i class="bi bi-database-fill"></i> Data</h4>
+          <div class="tags">
+            <span class="tag">PostgreSQL</span>
+            <span class="tag">SQL Server</span>
+            <span class="tag">MongoDB</span>
+            <span class="tag">Redis</span>
+            <span class="tag">Qdrant</span>
+            <span class="tag">Snowflake</span>
+            <span class="tag">Spark</span>
+          </div>
+        </div>
+        <div class="skill-card">
+          <h4><i class="bi bi-cloud-fill"></i> Cloud / DevOps</h4>
+          <div class="tags">
+            <span class="tag">AWS</span>
+            <span class="tag">Azure</span>
+            <span class="tag">Docker</span>
+            <span class="tag">Kubernetes</span>
+            <span class="tag">GitHub Actions</span>
+            <span class="tag">Jenkins</span>
+          </div>
+        </div>
+        <div class="skill-card">
+          <h4><i class="bi bi-diagram-3-fill"></i> Backend</h4>
+          <div class="tags">
+            <span class="tag">REST</span>
+            <span class="tag">GraphQL</span>
+            <span class="tag">gRPC</span>
+            <span class="tag">OAuth 2.0</span>
+            <span class="tag">JWT</span>
+            <span class="tag">Microservices</span>
+          </div>
+        </div>
+        <div class="skill-card">
+          <h4><i class="bi bi-graph-up"></i> Research</h4>
+          <div class="tags">
+            <span class="tag">Experimental Design</span>
+            <span class="tag">RAG Eval</span>
+            <span class="tag">Statistics</span>
+            <span class="tag">LaTeX</span>
+            <span class="tag">arXiv</span>
+          </div>
+        </div>
+      </div>
     </section>
 
-    <!-- Education -->
-    <section id="education">
-      <h2 class="section-title">Education</h2>
-      <ul class="bullet-spaced">
-        <li>
-          <strong>Ph.D. Candidate, Computer Science (AI)</strong>
-          <div class="exp-sub">Temple University — Jan 2020 — Present</div>
-        </li>
-        <li>
-          <strong>M.S., Information Systems Engineering</strong>
-          <div class="exp-sub">Harrisburg University — Jan 2012 — Apr 2014</div>
-        </li>
-        <li>
-          <strong>B.S., Computer Science</strong>
-          <div class="exp-sub">Arab Academy for Science & Technology — Jan 2004 — Aug 2008</div>
-        </li>
-      </ul>
-      <hr class="divider">
+    <section id="courses" class="reveal">
+      <div class="section-head">
+        <span class="section-num">06</span>
+        <h2 class="section-title">Teaching</h2>
+        <span class="section-line"></span>
+      </div>
+      <div class="courses-grid">
+        <div class="course">
+          <div class="course-name">Artificial Intelligence</div>
+          <div class="course-desc">Search, planning, ML fundamentals</div>
+        </div>
+        <div class="course">
+          <div class="course-name">Machine Learning</div>
+          <div class="course-desc">Models, training, evaluation</div>
+        </div>
+        <div class="course">
+          <div class="course-name">Computer Vision</div>
+          <div class="course-desc">OpenCV, deep vision, tracking</div>
+        </div>
+        <div class="course">
+          <div class="course-name">Mobile Development</div>
+          <div class="course-desc">Android, Kotlin, Jetpack</div>
+        </div>
+        <div class="course">
+          <div class="course-name">Advanced Databases</div>
+          <div class="course-desc">SQL/NoSQL, modeling, indexing</div>
+        </div>
+        <div class="course">
+          <div class="course-name">Algorithms &amp; Data Structures</div>
+          <div class="course-desc">Complexity, problem solving</div>
+        </div>
+      </div>
     </section>
 
-    <!-- Contact (anchor) -->
-    <section id="contact">
-      <h2 class="section-title">Contact</h2>
-      <ul class="bullet-tight">
-        <li>Email:  developer.mina a-t gmail.com </li> 
-        <li>Location: Mechanicsburg, PA</li> 
-        <li>Résumé: <a href="Mina_Gabriel_Resume.pdf" download>Download Résumé</a></li>
-      </ul>
+    <section id="education" class="reveal">
+      <div class="section-head">
+        <span class="section-num">07</span>
+        <h2 class="section-title">Education</h2>
+        <span class="section-line"></span>
+      </div>
+      <div class="edu-list">
+        <div class="edu">
+          <div class="edu-info">
+            <h4>Ph.D. in Computer &amp; Information Sciences (AI)</h4>
+            <p>Temple University — advised by Prof. Pei Wang</p>
+          </div>
+          <span class="edu-date">2020 — Present</span>
+        </div>
+        <div class="edu">
+          <div class="edu-info">
+            <h4>M.S., Information Systems Engineering &amp; Management</h4>
+            <p>Harrisburg University of Science &amp; Technology</p>
+          </div>
+          <span class="edu-date">2012 — 2014</span>
+        </div>
+        <div class="edu">
+          <div class="edu-info">
+            <h4>B.S., Computer Science</h4>
+            <p>Arab Academy for Science, Technology &amp; Maritime Transport</p>
+          </div>
+          <span class="edu-date">2004 — 2008</span>
+        </div>
+      </div>
     </section>
+
+    <section id="contact" class="reveal">
+      <div class="section-head">
+        <span class="section-num">08</span>
+        <h2 class="section-title">Get in touch</h2>
+        <span class="section-line"></span>
+      </div>
+      <p class="about-text">
+        Open to research collaborations, technical conversations, and consulting.
+        Best reached by <a href="mailto:developer.mina@gmail.com">email</a> —
+        currently based in Mechanicsburg, PA.
+      </p>
+      <div class="social" style="justify-content:flex-start;">
+        <a href="mailto:developer.mina@gmail.com" class="primary">
+          <i class="bi bi-envelope-fill"></i> developer.mina@gmail.com
+        </a>
+        <a href="Mina_Gabriel_Resume.pdf" download>
+          <i class="bi bi-file-earmark-arrow-down-fill"></i> Download Résumé
+        </a>
+      </div>
+    </section>
+
   </main>
 
   <footer>
-    <div class="wrap">
-      © 2025 Mina Gabriel 
+    <div class="container">
+      <div class="footer-row">
+        <a href="mailto:developer.mina@gmail.com">Email</a>
+        <a href="https://www.linkedin.com/in/mina-gabriel-b9628913b/" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://scholar.google.com/citations?user=Ff1MB9cAAAAJ&hl=en" target="_blank" rel="noopener">Scholar</a>
+        <a href="Mina_Gabriel_Resume.pdf" download>Résumé</a>
+      </div>
+      <div>© 2026 Mina Gabriel · Mechanicsburg, PA</div>
+      <div class="built-with">// crafted with care</div>
     </div>
   </footer>
 
-  <!-- Optional Bootstrap JS (not required for this layout) -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    const root = document.documentElement;
+    const toggle = document.getElementById('themeToggle');
+    const icon = document.getElementById('themeIcon');
+
+    const saved = localStorage.getItem('theme');
+    if (saved) root.setAttribute('data-theme', saved);
+    updateIcon();
+
+    toggle.addEventListener('click', () => {
+      const next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      root.setAttribute('data-theme', next);
+      localStorage.setItem('theme', next);
+      updateIcon();
+    });
+
+    function updateIcon(){
+      const dark = root.getAttribute('data-theme') === 'dark';
+      icon.className = dark ? 'bi bi-sun-fill' : 'bi bi-moon-stars-fill';
+    }
+
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting){
+          e.target.classList.add('in');
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+    const sections = document.querySelectorAll('main section[id]');
+    const navLinks = document.querySelectorAll('.nav-links a[href^="#"]');
+    const spy = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting){
+          const id = e.target.id;
+          navLinks.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#' + id));
+        }
+      });
+    }, { threshold: 0.3, rootMargin: '-80px 0px -50% 0px' });
+    sections.forEach(s => spy.observe(s));
+  </script>
 </body>
 </html>
